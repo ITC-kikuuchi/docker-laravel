@@ -16,12 +16,16 @@ RUN apt-get update \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libpng-dev \
+        libzip-dev \
+        zlib1g-dev \ 
+        libpng-dev \
     && docker-php-ext-configure \
         gd --with-freetype --with-jpeg \
     && docker-php-ext-install \
         pdo_mysql \
         pdo_pgsql  \
         bcmath \
-        -j$(nproc) gd
+        -j$(nproc) gd \
+        zip
 
 WORKDIR /var/www/html
